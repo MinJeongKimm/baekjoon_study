@@ -39,18 +39,20 @@ public class Main {
 		} // 지도 입력 완료
 
 		BFS(tR, tC);
+		StringBuilder sb = new StringBuilder();
 
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < M; j++) {
 				if (dist[i][j] == 0 && map[i][j] == 1) {
-					System.out.print(-1 + " ");
+					sb.append(-1 + " ");
 				}else {
-					System.out.print(dist[i][j] + " ");
+					sb.append(dist[i][j] + " ");
 				}
 			}
-			System.out.println();
+			sb.append("\n");
 		}//거리 출력
 
+		System.out.println(sb);
 	}// main
 
 	static void BFS(int r, int c) {
