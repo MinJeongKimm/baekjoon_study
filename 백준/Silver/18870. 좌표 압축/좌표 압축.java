@@ -19,7 +19,7 @@ public class Main {
 			set.add(n);
 		}
 
-		Map<Integer, Integer> map = new TreeMap<Integer, Integer>();	//원소 값과 순위 저장할 map
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();	//원소 값과 순위 저장할 map
 
 		int rank = 0;
 		for (int n : set) {
