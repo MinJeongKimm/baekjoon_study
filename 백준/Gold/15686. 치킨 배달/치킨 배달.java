@@ -68,22 +68,23 @@ public class Main {
 					}
 				}
 
-				// 치킨 거리 합 계산
-				int sum = 0;
-				for (int i = 0; i < N; i++) {
-					for (int j = 0; j < N; j++) {
-						if (dist[i][j] != Integer.MAX_VALUE) {
-							sum += dist[i][j];
-						}
-					}
-				}
-
-				//정답 갱신
-				ans = Math.min(ans, sum);
 
 			}
+			
+			// 조합 케이스 별 치킨 거리 합 계산
+			int sum = 0;
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
+					if (dist[i][j] != Integer.MAX_VALUE) {
+						sum += dist[i][j];
+					}
+				}
+			}
+			
+			//정답 갱신
+			ans = Math.min(ans, sum);
 
-		} // 치킨 거리 최소 계산
+		} // 전체 조합 케이스 탐색
 
 		System.out.println(ans);
 
