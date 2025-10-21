@@ -47,8 +47,12 @@ public class Main {
 				backtrack(i, j, 0, map[i][j]);
 
 				// 2. ㅗ 테트로미노
+				int min = Integer.MAX_VALUE;
 				neighbors = new ArrayList<>();
+
 				// 2-1. 상하좌우 탐색
+				int tSum = map[i][j];
+				
 				for (int d = 0; d < 4; d++) {
 					int nR = i + dr[d];
 					int nC = j + dc[d];
@@ -56,28 +60,14 @@ public class Main {
 					if (nR < 0 || nR >= N || nC < 0 || nC >= M)
 						continue;
 
+					min = Math.min(map[nR][nC], min);
 					neighbors.add(new int[] { nR, nC });
+					tSum += map[nR][nC];
 				}
 
-				// 2-2. 이웃 개수에 따라 계산 수행
-				int tSum = map[i][j];
-
-				if (neighbors.size() <= 2)
-					continue;
-				else if (neighbors.size() == 3) {
-					for (int[] tmp : neighbors) {
-						tSum += map[tmp[0]][tmp[1]];
-					}
-				} else { // 이웃 4개일 때
-					int min = Integer.MAX_VALUE;
-
-					for (int[] tmp : neighbors) {
-						int num = map[tmp[0]][tmp[1]];
-						tSum += num;
-						min = Math.min(num, min);
-					}
-					tSum -= min; // 전체 합에서 최소 이웃값 뺌
-				}
+				// 2-2. 이웃 4개면 최소 이웃값 뺌
+				if (neighbors.size() == 4)
+					tSum -= min;
 
 				// 3. 4 유형 테트로미노 최댓값과 ㅗ 테트로미노 최댓값 비교
 				ans = Math.max(ans, tSum);
